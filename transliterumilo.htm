@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="eo">
+	<head>
+		<style type="text/css">
+			#grandeco {
+				  padding: 8px 12px 6px 12px;
+				  border-style: solid;
+				  border-color: #3e970e;
+				  border-width: 4px 1px 1px 1px;
+				  border-radius: 6px;
+				  background: #ffffff;
+			  }
+
+			  h2 {
+				font: bold 16pt Tahoma;
+				margin-top: 4px;
+				margin-bottom: 8px;
+				color: #3e970e;
+			}
+
+			p {
+				font: 10pt Tahoma;
+				margin-top: 10px;
+				margin-bottom: 8px;
+				text-align: justify;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="grandeco">
+			<h2>
+				Transliterumilo EO-Shaw
+			</h2>
+			<form id="form" name="form">
+				<p>
+					<b>1. Originala teksto:</b><br/>
+						<input type="radio" name="o_alfabeto" id="EO" for="EO" value="EO" checked onclick="malmontri_butonojn();"><label for="EO" onclick="malmontri_butonojn();">Transliterumi el la esperantlatina</label>
+						<input type="radio" name="o_alfabeto" id="EO_Sx" for="EO_Sx" value="EO_Sx" onclick="malmontri_butonojn();"><label for ="EO_Sx" onclick="malmontri_butonojn();">Transliterumi el la ŝava alfabeto</label>
+				</p>
+				<p>
+					<textarea type="text" id="teksto_original" name="teksto_original" value="" oninput="UpdateTeksto1();" style="width: 400px; height:100px; overflow:auto; font-family: 'Inter Alia'"></textarea>
+				</p>
+				<p id="butonoj_literoj">
+					<input type="button" value="Ĉ" class="butonoj_literoj" onclick="aldoni_Cx();">	
+					<input type="button" value="Ĥ" class="butonoj_literoj" onclick="aldoni_Hx();">
+					<input type="button" value="Ĝ" class="butonoj_literoj" onclick="aldoni_Gx();">	
+					<input type="button" value="Ĵ" class="butonoj_literoj" onclick="aldoni_Jx();">
+					<input type="button" value="Ŝ" class="butonoj_literoj" onclick="aldoni_Sx();">	
+					<input type="button" value="Ŭ" class="butonoj_literoj" onclick="aldoni_Ux();">
+				</p>
+				
+				<p style="display: none;">
+					<input type="radio" name="sxava_alfabeto" id ="Ssx" for="Sx" checked><label for="Ssx">Uzi la starlingŝavan version</label>
+					<input type="radio" name="sxava_alfabeto" id ="Pss" for="EO_Sx"><label for ="Pss">Uzi version de Pokrovskij</label>
+				</p>
+
+				<p>
+					<b>2. Transliterumita teksto:</b>
+				</p>
+				<p style="text-overflow: initial;">
+					<textarea type="text" id="rezulto" name="rezulto" readonly="readonly" style="font-family: 'Inter Alia'; width: 400px; height:100px; overflow:auto" ></textarea>
+				</p>
+			</form>
+	</div>
+		<script id="simbolo">
+			var inputElement = document.getElementById("teksto_original");
+			
+			var butonoj_literoj = document.getElementsByClassName('butonoj_literoj').display;
+
+			function aldoni_Cx() {
+				inputElement.value += "ĉ";
+				UpdateTeksto1();
+			}
+
+			function aldoni_Hx() {
+				inputElement.value += "ĥ";
+				UpdateTeksto1();
+			}
+			
+			function aldoni_Gx() {
+				inputElement.value += "ĝ";
+				UpdateTeksto1();
+			}
+
+			function aldoni_Jx() {
+				inputElement.value += "ĵ";
+				UpdateTeksto1();
+			}
+
+			function aldoni_Sx() {
+				inputElement.value += "ŝ";
+				UpdateTeksto1();
+			}
+
+			function aldoni_Ux() {
+				inputElement.value += "ŭ";
+				UpdateTeksto1();
+			}
+		</script>
+		<script id="transliterumiloLATST">
+			
+			var InputText = "";
+			var o_alfabeto = document.form.elements.o_alfabeto;
+	
+			function UpdateTeksto1() {
+				var inputElement = document.getElementById("teksto_original");
+				InputText = inputElement.value;
+
+				if(o_alfabeto.value == 'EO') {
+					transliterumi_EO(InputText);
+				} else {
+					transliterumi_EO_Sx(InputText);
+				}
+				
+			}
+
+			var transliterumi_EO = function(InputText) {
+
+			
+				InputText = InputText
+				.replace(/\u0061/g, '𐑨')	//a
+				.replace(/\u0062/g, '𐑚')	//b
+				.replace(/\u0063/g, '𐑔')	//c
+				.replace(/\u0064/g, '𐑛')	//d
+				.replace(/\u0065/g, '𐑧')	//e
+				.replace(/\u0066/g, '𐑓')	//f
+				.replace(/\u0067/g, '𐑜')	//g
+				.replace(/\u0068/g, '𐑣')	//h
+				.replace(/\u0069/g, '𐑦')	//i
+				.replace(/\u006A/g, '𐑢')	//j
+				.replace(/\u006B/g, '𐑒')	//k
+				.replace(/\u006C/g, '𐑤')	//l
+				.replace(/\u006D/g, '𐑫')	//m
+				.replace(/\u006E/g, '𐑵')	//n
+				.replace(/\u006F/g, '𐑩')	//o
+				.replace(/\u0070/g, '𐑐')	//p
+				.replace(/\u0072/g, '𐑮')	//r
+				.replace(/\u0073/g, '𐑕')	//s
+				.replace(/\u0074/g, '𐑑')	//t
+				.replace(/\u0075/g, '𐑪')	//u
+				.replace(/\u0076/g, '𐑝')	//v
+				.replace(/\u007A/g, "𐑟")	//z
+
+				.replace(/\u0109/g, '𐑗')	//ĉ
+				.replace(/\u0125/g, '𐑙')	//ĥ
+				.replace(/\u011D/g, '𐑡')	//ĝ
+				.replace(/\u0135/g, '𐑠')	//ĵ
+				.replace(/\u015D/g, '𐑖')	//ŝ
+				.replace(/\u016D/g, '𐑘')	//ŭ
+
+
+				.replace(/\u0041/g, '𐑨')	//A
+				.replace(/\u0042/g, '𐑚')	//B
+				.replace(/\u0043/g, '𐑔')	//C
+				.replace(/\u0044/g, '𐑛')	//D
+				.replace(/\u0045/g, '𐑧')	//E
+				.replace(/\u0046/g, '𐑓')	//F
+				.replace(/\u0047/g, '𐑜')	//G
+				.replace(/\u0048/g, '𐑣')	//H
+				.replace(/\u0049/g, '𐑦')	//I
+				.replace(/\u004A/g, '𐑢')	//J
+				.replace(/\u004B/g, '𐑒')	//K
+				.replace(/\u004C/g, '𐑤')	//L
+				.replace(/\u004D/g, '𐑫')	//M
+				.replace(/\u004E/g, '𐑵')	//N
+				.replace(/\u004F/g, '𐑩')	//O
+				.replace(/\u0050/g, '𐑐')	//P
+				.replace(/\u0052/g, '𐑮')	//R
+				.replace(/\u0053/g, '𐑕')	//S
+				.replace(/\u0054/g, '𐑑')	//T
+				.replace(/\u0055/g, '𐑪')	//U
+				.replace(/\u0056/g, '𐑝')	//V
+				.replace(/\u005A/g, "𐑟")	//Z
+
+				.replace(/\u0108/g, '𐑗')	//Ĉ
+				.replace(/\u0124/g, '𐑙')	//Ĥ
+				.replace(/\u011C/g, '𐑡')	//Ĝ
+				.replace(/\u0134/g, '𐑠')	//Ĵ
+				.replace(/\u015C/g, '𐑖')	//Ŝ
+				.replace(/\u016C/g, '𐑘')	//Ŭ
+
+				var rezulto = document.getElementById('rezulto');
+				rezulto.value = InputText;
+			};
+
+			
+
+			var transliterumi_EO_Sx = function(InputText) {
+
+				InputText = InputText
+				.replace(/\u{10468}/gu, 'a')	//a
+				.replace(/\u{1045A}/gu, 'b')	//b
+				.replace(/\u{10454}/gu, 'c')	//c
+				.replace(/\u{1045B}/gu, 'd')	//d
+				.replace(/\u{10467}/gu, 'e')	//e
+				.replace(/\u{10453}/gu, 'f')	//f
+				.replace(/\u{1045C}/gu, 'g')	//g
+				.replace(/\u{10463}/gu, 'h')	//h
+				.replace(/\u{10466}/gu, 'i')	//i
+				.replace(/\u{10462}/gu, 'j')	//j
+				.replace(/\u{10452}/gu, 'k')	//k
+				.replace(/\u{10464}/gu, 'l')	//l
+				.replace(/\u{1046B}/gu, 'm')	//m
+				.replace(/\u{10475}/gu, 'n')	//n
+				.replace(/\u{10469}/gu, 'o')	//o
+				.replace(/\u{10450}/gu, 'p')	//p
+				.replace(/\u{1046E}/gu, 'r')	//r
+				.replace(/\u{10455}/gu, 's')	//s
+				.replace(/\u{10451}/gu, 't')	//t
+				.replace(/\u{1046A}/gu, 'u')	//u
+				.replace(/\u{1045D}/gu, 'v')	//v
+				.replace(/\u{1045F}/gu, "z")	//z
+
+				.replace(/\u{10457}/gu, 'ĉ')	//ĉ
+				.replace(/\u{10459}/gu, 'ĥ')	//ĥ
+				.replace(/\u{10461}/gu, 'ĝ')	//ĝ
+				.replace(/\u{10460}/gu, 'ĵ')	//ĵ
+				.replace(/\u{10456}/gu, 'ŝ')	//ŝ
+				.replace(/\u{10458}/gu, 'ŭ')	//ŭ
+
+				.replace(/\u{10473}/gu, 'on')	//on 𐑳
+				.replace(/\u{10472}/gu, 'aŭ')	//aŭ 𐑲
+				.replace(/\u{10471}/gu, 'eŭ')	//eŭ 𐑱
+				.replace(/\u{10470}/gu, 'i')	//i 𐑰
+				.replace(/\u{1045E}/gu, 'dz')	//i 𐑔
+
+
+				var rezulto = document.getElementById('rezulto');
+				rezulto.value = InputText;
+				};
+		</script>
+	</body>
+</html>
+
+				
