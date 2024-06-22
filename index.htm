@@ -3,15 +3,15 @@
 	<head>
 		<style type="text/css">
 			#grandeco {
-				  padding: 8px 12px 6px 12px;
-				  border-style: solid;
-				  border-color: #3e970e;
-				  border-width: 4px 1px 1px 1px;
-				  border-radius: 6px;
-				  background: #ffffff;
-			  }
+				padding: 8px 12px 6px 12px;
+				border-style: solid;
+				border-color: #3e970e;
+				border-width: 4px 1px 1px 1px;
+				border-radius: 6px;
+				background: #ffffff;
+			}
 
-			  h2 {
+			h2 {
 				font: bold 16pt Tahoma;
 				margin-top: 4px;
 				margin-bottom: 8px;
@@ -35,13 +35,13 @@
 			<form id="form" name="form">
 				<p>
 					<b>1. Originala teksto:</b><br/>
-						<input type="radio" name="o_alfabeto" id="EO" for="EO" value="EO" checked onclick="malmontri_butonojn();"><label for="EO" onclick="malmontri_butonojn();">Transliterumi el la esperantlatina</label>
-						<input type="radio" name="o_alfabeto" id="EO_Sx" for="EO_Sx" value="EO_Sx" onclick="malmontri_butonojn();"><label for ="EO_Sx" onclick="malmontri_butonojn();">Transliterumi el la ŝava alfabeto</label>
+						<input type="radio" name="o_alfabeto" id="EO" for="EO" value="EO" checked ><label for="EO" >Transliterumi el la esperantlatina</label>
+						<input type="radio" name="o_alfabeto" id="EO_Sx" for="EO_Sx" value="EO_Sx"><label for ="EO_Sx" >Transliterumi el la ŝava alfabeto</label>
 				</p>
 				<p>
 					<textarea type="text" id="teksto_original" name="teksto_original" value="" oninput="UpdateTeksto1();" style="width: 400px; height:100px; overflow:auto; font-family: 'Inter Alia'"></textarea>
 				</p>
-				<p>*Bonvolu, ne uzi neesperantajn diakritaĵojn.</p>
+				<p style="font-size: 0.75em;">*Bonvolu, ne uzi neesperantajn diakritaĵojn.</p>
 				<p id="butonoj_literoj">
 					<input type="button" value="Ĉ" class="butonoj_literoj" onclick="aldoni_Cx();">	
 					<input type="button" value="Ĥ" class="butonoj_literoj" onclick="aldoni_Hx();">
@@ -49,8 +49,8 @@
 					<input type="button" value="Ĵ" class="butonoj_literoj" onclick="aldoni_Jx();">
 					<input type="button" value="Ŝ" class="butonoj_literoj" onclick="aldoni_Sx();">	
 					<input type="button" value="Ŭ" class="butonoj_literoj" onclick="aldoni_Ux();">
+					<input type="button" value="·" class="butonoj_literoj" onclick="aldoni_IP();">
 				</p>
-				
 				<p style="display: none;">
 					<input type="radio" name="sxava_alfabeto" id ="Ssx" for="Sx" checked><label for="Ssx">Uzi la starlingŝavan version</label>
 					<input type="radio" name="sxava_alfabeto" id ="Pss" for="EO_Sx"><label for ="Pss">Uzi version de Pokrovskij</label>
@@ -98,6 +98,11 @@
 				inputElement.value += "ŭ";
 				UpdateTeksto1();
 			}
+
+			function aldoni_IP() {
+				inputElement.value += "·";
+				UpdateTeksto1();
+			}
 		</script>
 		<script id="transliterumiloLATST">
 			
@@ -118,7 +123,6 @@
 
 			var transliterumi_EO = function(InputText) {
 
-			
 				InputText = InputText
 				.replace(/\u0061/g, '𐑨')	//a
 				.replace(/\u0062/g, '𐑚')	//b
@@ -184,8 +188,6 @@
 				var rezulto = document.getElementById('rezulto');
 				rezulto.value = InputText;
 			};
-
-			
 
 			var transliterumi_EO_Sx = function(InputText) {
 
